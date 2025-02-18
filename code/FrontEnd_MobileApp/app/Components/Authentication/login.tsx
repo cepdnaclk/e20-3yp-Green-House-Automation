@@ -12,7 +12,7 @@ const Login:React.FC = () => {
             return;
         }
 
-        router.push("/Components/zone/Zone");
+        router.push("../Home/Home");
     }
 
     return (

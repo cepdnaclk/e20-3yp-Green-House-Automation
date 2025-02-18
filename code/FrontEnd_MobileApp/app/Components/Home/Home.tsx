@@ -1,18 +1,28 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from "react-native";
+import { 
+  View, 
+  Text, 
+  Image, 
+  TouchableOpacity, 
+  StyleSheet, 
+  Dimensions, 
+  Modal, 
+  FlatList 
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Footer from "../common/Footer";
 
-interface HeaderProps {
-  selectedZone: string;
-  setSelectedZone: (zone: string) => void;
-}
+const { width, height } = Dimensions.get("window");
 
-const Header: React.FC<HeaderProps> = ({ selectedZone, setSelectedZone }) => {
+const Home = () => {
+  const [selectedZone, setSelectedZone] = useState("ZONE 1");
   const [modalVisible, setModalVisible] = useState(false);
-  const zones = ["ZONE 1", "ZONE 2", "ZONE 3", "ZONE 4"];
+
+  const zones = ["ZONE 1", "ZONE 2", "ZONE 3", "ZONE 4", "ZONE 5", "ZONE 6"];
 
   return (
-    <View>
+    <View style={styles.container}>
+      
       <View style={styles.header}>
         <TouchableOpacity>
           <Ionicons name="notifications" size={26} color="white" />
@@ -51,11 +61,29 @@ const Header: React.FC<HeaderProps> = ({ selectedZone, setSelectedZone }) => {
           </View>
         </View>
       </Modal>
+
+      <Image source={require("../../../assets/download.jpeg")} style={styles.image} />
+
+      <View style={styles.optionsContainer}>
+        {zones.map((option, index) => (
+          <TouchableOpacity key={index} style={styles.optionButton}>
+            <Text style={styles.optionText}>{option}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      <Footer />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "rgb(4,38,28)",
+    alignItems: "center",
+    paddingTop: height * 0.05,
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -108,6 +136,33 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
   },
+  image: {
+    width: width * 0.9,
+    height: height * 0.25,
+    borderRadius: 10,
+    marginTop: 80,
+    marginBottom: 15,
+  },
+  optionsContainer: {
+    width: "90%",
+    backgroundColor: "#1B5E20",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  optionButton: {
+    width: "100%",
+    padding: 15,
+    marginVertical: 5,
+    backgroundColor: "#388E3C",
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  optionText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
 
-export default Header;
+export default Home;

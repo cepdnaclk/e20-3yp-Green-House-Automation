@@ -1,19 +1,18 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { router } from 'expo-router';
 
 const Footer: React.FC = () => {
   return (
     <View style={styles.footer}>
       <TouchableOpacity>
-        <Ionicons name="grid" size={28} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push("Components/Statics/Statistics")}>
-        <Ionicons name="bar-chart" size={28} color="white" />
+        <Ionicons name="grid" size={28} color="black" a/>
       </TouchableOpacity>
       <TouchableOpacity>
-        <MaterialCommunityIcons name="account-cog" size={28} color="white" />
+        <Ionicons name="bar-chart" size={28} color="black" a/>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <MaterialCommunityIcons name="account-cog" size={28} color="black" a/>
       </TouchableOpacity>
     </View>
   );
