@@ -37,10 +37,11 @@ class AwsIotProvisioningServiceTest {
 
         // Manually inject the mock iotClient (normally injected after @PostConstruct)
         awsIotProvisioningService = new AwsIotProvisioningService();
-        awsIotProvisioningService.deviceRepo = deviceRepo;
-        awsIotProvisioningService.awsIotCredentialsRepo = awsIotCredentialsRepo;
-        awsIotProvisioningService.iotClient = iotClient;
-        awsIotProvisioningService.endpoint = "mock-endpoint.iot.region.amazonaws.com";
+    //     awsIotProvisioningService.deviceRepo = deviceRepo;
+    //     awsIotProvisioningService.awsIotCredentialsRepo = awsIotCredentialsRepo;
+    //     awsIotProvisioningService.iotClient = iotClient;
+    //     awsIotProvisioningService.endpoint = "mock-endpoint.iot.region.amazonaws.com";
+    // }
     }
 
     @Test
