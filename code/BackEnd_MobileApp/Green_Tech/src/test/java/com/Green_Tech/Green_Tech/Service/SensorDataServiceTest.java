@@ -8,16 +8,16 @@ import com.Green_Tech.Green_Tech.Repository.SensorDataRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class SensorDataServiceTest {
@@ -83,22 +83,22 @@ public class SensorDataServiceTest {
     @Test
     void testGetSensorData_callsRepository() {
         Long id = 1L;
-        SensorData mockSensorData = SensorData.builder()
-                .temperature(25.5)
-                .humidity(60.0)
-                .soilMoisture(45.0)
-                .nitrogenLevel(0.001)
-                .phosphorusLevel(0.001)
-                .potassiumLevel(0.001)
-                .updatedAt(new Date())
-                .build();
+        // Prepare mock SensorData object, since repository returns SensorData
+        SensorData mockSensorData = new SensorData();
+        mockSensorData.setTemperature(25.5);
+        mockSensorData.setHumidity(60.0);
+        mockSensorData.setSoilMoisture(45.0);
+        mockSensorData.setNitrogenLevel(0.001);
+        mockSensorData.setPhosphorusLevel(0.001);
+        mockSensorData.setPotassiumLevel(0.001);
+        mockSensorData.setUpdatedAt(new Date());
 
-        when(sensorDataRepository.findFirstByIdOrderByIdDesc(id)).thenReturn(mockSensorData);
+        when(sensorDataRepository.findFirstByDeviceIdOrderByIdDesc(id)).thenReturn(mockSensorData);
 
-        SensorData result = sensorDataService.getSensorData(id);
+        Map<String, Object> result = sensorDataService.getSensorData(id);
 
         assertNotNull(result);
-        assertEquals(25.5, result.getTemperature());
-        verify(sensorDataRepository, times(1)).findFirstByIdOrderByIdDesc(id);
+        assertEquals(25.5, result.get("temperature"));
+        verify(sensorDataRepository, times(1)).findFirstByDeviceIdOrderByIdDesc(id);
     }
 }
