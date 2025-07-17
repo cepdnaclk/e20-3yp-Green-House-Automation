@@ -206,20 +206,128 @@
     <div class="relative isolate overflow-hidden py-24 sm:py-16" id="SolutionArchitecture">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="text-4xl font-semibold tracking-tight sm:text-6xl text-center">Solution Architecture</h2>
+        <div class="mt-10 gap-8 sm:mt-16 flex justify-center mb-8">
+          <img src="./images/high-level-new-new.png" alt="SolutionArchitecture" class="max-w-4xl mx-auto w-full">
+        </div>
         <h2 class="text-4xl font-semibold tracking-tight sm:text-4xl mt-6 text-center">Circuit Design</h2>
         <div class="mt-10 gap-8 sm:mt-16 flex justify-center mb-8">
           <img src="./images/circuit_image.png" alt="circuit_image" class="max-w-4xl mx-auto w-full">
-        </div>
-        <div class="mt-10 gap-8 sm:mt-16 flex justify-center mb-8">
-          <img src="./images/high-level-new.png" alt="SolutionArchitecture" class="max-w-4xl mx-auto w-full">
         </div>
         <h2 class="text-4xl font-semibold tracking-tight sm:text-4xl mt-6 text-center">Control Flow</h2>
         <div class="mt-10 gap-8 sm:mt-16 flex justify-center mb-8">
           <img src="./images/data-flow-new.png" alt="control flow" class="max-w-4xl mx-auto w-full">
         </div>
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-4xl mt-6 text-center">Our Product</h2>
+        <div class="mt-10 gap-8 sm:mt-16 flex justify-center mb-8">
+          <img src="./images/product.jpg" alt="Our Product" class="max-w-4xl mx-auto w-full">
+        </div>
       </div>
     </div>
+    
+    <div class="relative isolate overflow-hidden py-24 sm:py-16" id="SolutionArchitecture">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-6xl text-center">Software System</h2>
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-4xl mt-12 mb-6 text-center">Mobile App</h2>
+        <div class="relative max-w-3xl mx-auto">
+          <div id="software-slider" class="overflow-hidden rounded-lg shadow-lg">
+            <div id="software-inner-slider" class="flex transition-transform duration-500">
+              <img src="./images/1.png" alt="Software Slide 1" class="w-full object-cover">
+              <img src="./images/2.png" alt="Software Slide 2" class="w-full object-cover">
+              <img src="./images/3.png" alt="Software Slide 3" class="w-full object-cover">
+              <img src="./images/4.png" alt="Software Slide 4" class="w-full object-cover">
+              <img src="./images/5.png" alt="Software Slide 5" class="w-full object-cover">
+            </div>
+          </div>
+          <div class="flex justify-center mt-4 gap-2">
+            <button class="software-prev px-3 py-1 bg-[rgb(1,105,77)] text-white rounded hover:bg-green-600">&lt;</button>
+            <button class="software-next px-3 py-1 bg-[rgb(1,105,77)] text-white rounded hover:bg-green-600">&gt;</button>
+          </div>
+        </div>
+      </div>
 
+      <script>
+        const slider = document.querySelector('#software-inner-slider');
+        const slides = slider.children.length;
+        let currentSlide = 0;
+
+        // Dynamically set the total width of the inner slider based on number of images
+        slider.style.width = `${slides * 100}%`;
+
+        // Set width for each image inside (to take equal share)
+        Array.from(slider.children).forEach(child => {
+          child.style.width = `${100 / slides}%`;
+          child.style.flexShrink = '0'; // prevent shrinking
+        });
+
+        function showSlide(idx) {
+          slider.style.transform = `translateX(-${idx * (100 / slides)}%)`;
+        }
+
+        document.querySelector('.software-prev').onclick = () => {
+          currentSlide = (currentSlide - 1 + slides) % slides;
+          showSlide(currentSlide);
+        };
+
+        document.querySelector('.software-next').onclick = () => {
+          currentSlide = (currentSlide + 1) % slides;
+          showSlide(currentSlide);
+        };
+
+        showSlide(currentSlide);
+      </script>
+    </div>
+
+    <div class="relative isolate overflow-hidden" id="admin-slider-section">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-4xl mb-6 text-center">Admin Interface</h2>
+        <div class="relative max-w-3xl mx-auto">
+          <div id="admin-slider" class="overflow-hidden rounded-lg shadow-lg">
+            <div id="admin-inner-slider" class="flex transition-transform duration-500">
+              <img src="./images/admin1.png" alt="Admin Slide 1" class="w-full object-cover">
+              <img src="./images/admin2.png" alt="Admin Slide 2" class="w-full object-cover">
+              <img src="./images/admin3.png" alt="Admin Slide 3" class="w-full object-cover">
+              <img src="./images/admin4.png" alt="Admin Slide 4" class="w-full object-cover">
+              <img src="./images/admin5.png" alt="Admin Slide 5" class="w-full object-cover">
+              <img src="./images/admin6.png" alt="Admin Slide 6" class="w-full object-cover">
+            </div>
+          </div>
+          <div class="flex justify-center mt-4 gap-2">
+            <button class="admin-prev px-3 py-1 bg-[rgb(1,105,77)] text-white rounded hover:bg-green-600">&lt;</button>
+            <button class="admin-next px-3 py-1 bg-[rgb(1,105,77)] text-white rounded hover:bg-green-600">&gt;</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        const adminSlider = document.querySelector('#admin-inner-slider');
+        const adminSlides = adminSlider.children.length;
+        let adminCurrentSlide = 0;
+
+        adminSlider.style.width = `${adminSlides * 100}%`;
+        Array.from(adminSlider.children).forEach(child => {
+          child.style.width = `${100 / adminSlides}%`;
+          child.style.flexShrink = '0';
+        });
+
+        function showAdminSlide(idx) {
+          adminSlider.style.transform = `translateX(-${idx * (100 / adminSlides)}%)`;
+        }
+
+        document.querySelector('.admin-prev').onclick = () => {
+          adminCurrentSlide = (adminCurrentSlide - 1 + adminSlides) % adminSlides;
+          showAdminSlide(adminCurrentSlide);
+        };
+
+        document.querySelector('.admin-next').onclick = () => {
+          adminCurrentSlide = (adminCurrentSlide + 1) % adminSlides;
+          showAdminSlide(adminCurrentSlide);
+        };
+
+        showAdminSlide(adminCurrentSlide);
+      </script>
+    </div>
+
+
+    </div>
     <!-- Testing -->
     <div class="relative isolate overflow-hidden py-24 sm:py-16" id="testing">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
