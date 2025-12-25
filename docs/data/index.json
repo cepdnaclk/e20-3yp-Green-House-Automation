@@ -27,5 +27,7 @@
             "email": "isurunawinne@eng.pdn.ac.lk"
         }
     ],
-    "tags": []
+    "tags": ["IOT", "Cloud"],
+    "image": "cover_page.jpg",
+    "thumbnail": "thumbnail.jpg"
 }
